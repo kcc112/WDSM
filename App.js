@@ -1,19 +1,102 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Image, Text } from 'react-native';
+import { Button } from 'react-native-elements'
+import * as WebBrowser from 'expo-web-browser';
+import Start from './components/Start'
 
 export default function App() {
+  const [isVisible, setVisible] = useState(false);
+
+  const handleSetVisibleOn = () => {
+    setVisible(true)
+  }
+
+  const handleSetVisibleOf = () => {
+    setVisible(false)
+  }
+
+
+  const redirectToWebsite = () => {
+    WebBrowser.openBrowserAsync('https://programy.p.lodz.pl/ectslabel-web/?l=pl&s=programKsztalcenia&pk=informatyka')
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <View style={ styles.mainContainer }>
+      <View style={ styles.logoContainer }>
+        <Image
+          source={ require('./assets/logo.png') }
+          resizeMode='center'
+        />
+      </View>
+      <View style={ styles.buttonContainer }>
+        <View style={ styles.button }>
+          <Button
+            title='Start'
+            buttonStyle={ styles.buttonColor }
+            onPress={ handleSetVisibleOn }
+            type='outline'
+          />
+        </View>
+        <View style={ styles.button }>
+          <Button
+            buttonStyle={ styles.buttonColor }
+            title='Previous result'
+            type='outline'
+          />
+        </View>
+        <View style={ styles.button }>
+          <Button
+            buttonStyle={ styles.buttonColor }
+            title='Info'
+            onPress={ redirectToWebsite } 
+            type='outline'
+          />
+        </View>
+      </View>
+      <View style={ styles.footer }>
+          <Text>Authors: Kamil Celejewski, Mateusz Wasilewski, Jędrzej Dobrucki</Text>
+      </View>
+      <Start
+        visible={ isVisible }
+        onHandleSetVisibleOf={ handleSetVisibleOf }
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'column'
   },
+
+  buttonContainer: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+
+  logoContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    marginTop: '-20%'
+  },
+
+  button: {
+    width: '50%',
+    marginTop: '5%',
+  },
+
+  buttonColor: {
+    borderWidth: 3,
+    borderRadius: 20,
+  },
+
+  footer: {
+    height: 60,
+    width: '100%',
+    backgroundColor: 'white',
+    justifyContent: 'center',
+  }
 });
