@@ -18,7 +18,12 @@ export default function App() {
   }
 
   const previousResultHandler = () => {
+    if(scoreVisiblity ===false){
     setScoreVisibility(true);
+    }
+    else {
+      setScoreVisibility(false);
+    }
 
   };
 
@@ -74,7 +79,7 @@ export default function App() {
   else {
     return (
     <View style={styles.sceen}>
-    <ScoreScreen/>
+    <ScoreScreen scoreVisiblitySetter={previousResultHandler}/>
     </View>)
   }
 }
