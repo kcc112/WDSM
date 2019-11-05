@@ -79,7 +79,7 @@ export default function App() {
   else {
     return (
     <View style={styles.sceen}>
-    <ScoreScreen scoreVisiblitySetter={previousResultHandler}/>
+    <ScoreScreen retry={handleSetVisibleOn} scoreVisiblitySetter={previousResultHandler}/>
     </View>)
   }
 }
