@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, Button } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import { VictoryBar, VictoryStack } from "victory-native";
+import { Button } from 'react-native-elements'
 
 
 
@@ -13,11 +14,18 @@ const ScoreScreen = props => {
         { quarter: 4, earnings: 19000 }
     ];
 
+
+    const retryHandler = () => {
+        props.scoreVisiblitySetter();
+        props.startAgain();
+
+    };
+
     return (
         <View style={styles.screen}>
             <View style={styles.logoContainer}>
                 <Image
-                    source={require('../assets/logo.png')}
+                    source={require('../assets/logo.jpg')}
                     resizeMode='center'
                 />
             </View>
@@ -44,13 +52,9 @@ const ScoreScreen = props => {
             </VictoryStack>
 
             <View style={styles.buttonContainer}>
-                <Button style={styles.button} title="Retry" color='black' ></Button>
-                <Button style={styles.button} title="Home" color='black' onPress={props.scoreVisiblitySetter}></Button>
+                <Button buttonStyle={ styles.buttonColor } title="Retry" color='black' onPress={retryHandler}></Button>
+                <Button buttonStyle={ styles.buttonColor } title="Home" color='black' onPress={props.scoreVisiblitySetter}></Button>
             </View>
-
-
-
-
         </View>
     );
 };
@@ -63,23 +67,27 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
     },
+
     logoContainer: {
         marginTop: '-20%',
     },
     sumUp: {
         fontSize: 25,
-        marginTop: -50
+        marginTop: '-10%'
     },
+
     buttonContainer: {
         flexDirection: "row",
         width: '70%',
         justifyContent: 'space-between',
         paddingHorizontal: 15,
+        
     },
-    button: {
+    buttonColor: {
+        borderRadius: 20,
+        backgroundColor: '#b30c00',
         width: 100,
-
-    },
+      },
 
 });
 

@@ -7,19 +7,21 @@ import ScoreScreen from './screens/ScoreScreen'
 
 export default function App() {
   const [isVisible, setVisible] = useState(false);
+  const [index, setIndex] = useState(0);
   const [scoreVisiblity, setScoreVisibility] = useState(false);
 
-  const handleSetVisibleOn = () => {
-    setVisible(true)
-  }
+  const handleStartButtonClick = () => {
+    setIndex(0);
+    setVisible(true);
+  };
 
   const handleSetVisibleOf = () => {
-    setVisible(false)
-  }
+    setVisible(false);
+  };
 
   const previousResultHandler = () => {
-    if(scoreVisiblity ===false){
-    setScoreVisibility(true);
+    if(scoreVisiblity == false) {
+      setScoreVisibility(true);
     }
     else {
       setScoreVisibility(false);
@@ -30,56 +32,53 @@ export default function App() {
 
   const redirectToWebsite = () => {
     WebBrowser.openBrowserAsync('https://programy.p.lodz.pl/ectslabel-web/?l=pl&s=programKsztalcenia&pk=informatyka')
-  }
+  };
+
 
   if (!scoreVisiblity)
     return (
       <View style={styles.mainContainer}>
         <View style={styles.logoContainer}>
           <Image
-            source={require('./assets/logo.png')}
-            resizeMode='center'
+            source={require('./assets/logo.jpg')}
+            style={{flex: 1, height: null, width: null, resizeMode: 'cover'}}
           />
         </View>
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
             <Button
               title='Start'
-              buttonStyle={styles.buttonColor}
-              onPress={handleSetVisibleOn}
-              type='outline'
+              buttonStyle={ styles.buttonColor }
+              onPress={ handleStartButtonClick }
             />
           </View>
           <View style={styles.button}>
             <Button
-              buttonStyle={styles.buttonColor}
               title='Previous result'
-              type='outline'
+              buttonStyle={ styles.buttonColor}
               onPress={previousResultHandler}
             />
           </View>
           <View style={styles.button}>
             <Button
-              buttonStyle={styles.buttonColor}
+              buttonStyle={ styles.buttonColor }
               title='Info'
-              onPress={redirectToWebsite}
-              type='outline'
+              onPress={ redirectToWebsite } 
             />
           </View>
         </View>
-        <View style={styles.footer}>
-          <Text>Authors: Kamil Celejewski, Mateusz Wasilewski, Jędrzej Dobrucki</Text>
-        </View>
         <Start
-          visible={isVisible}
-          onHandleSetVisibleOf={handleSetVisibleOf}
+          visible={ isVisible }
+          onHandleSetVisibleOf={ handleSetVisibleOf }
+          index={ index }
+          onSetIndex={ setIndex }
         />
       </View>
     );
   else {
     return (
     <View style={styles.sceen}>
-    <ScoreScreen retry={handleSetVisibleOn} scoreVisiblitySetter={previousResultHandler}/>
+      <ScoreScreen startAgain={handleStartButtonClick } scoreVisiblitySetter={previousResultHandler}/>
     </View>)
   }
 }
@@ -97,10 +96,7 @@ const styles = StyleSheet.create({
   },
 
   logoContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    marginTop: '-20%'
+    flex: 1
   },
 
   button: {
@@ -109,16 +105,10 @@ const styles = StyleSheet.create({
   },
 
   buttonColor: {
-    borderWidth: 3,
     borderRadius: 20,
+    backgroundColor: '#b30c00'
   },
 
-  footer: {
-    height: 60,
-    width: '100%',
-    backgroundColor: 'white',
-    justifyContent: 'center',
-  },
   sceen : {
     flex : 1,
   }
