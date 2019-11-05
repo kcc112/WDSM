@@ -1,56 +1,134 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-native-elements'
-import { 
-    StyleSheet,
-    View,
-    Modal,
-    Image,
-    Dimensions,
-    Animated,
-} from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Image, Animated, PanResponder, Modal } from 'react-native';
 
-const SCREEN_HEIGHT = Dimensions.get('window').height
-const SCREEN_WIDTH = Dimensions.get('window').width
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 
-const Mems = [
-    { id: '1', uri: require('../assets/test.png') },
-    { id: '2', uri: require('../assets/test.png') },
-    { id: '3', uri: require('../assets/test.png') },
-    { id: '4', uri: require('../assets/test.png') },
-    { id: '5', uri: require('../assets/test.png') },
-]
+const Questions = [
+  { id: '1', uri: require('../assets/test.png'), text: 'example 1' },
+  { id: '2', uri: require('../assets/test.png'), text: 'example 2' },
+  { id: '3', uri: require('../assets/test.png'), text: 'example 3' },
+];
 
-rendetImages = () => {
-    return Mems.map((item, i) => {
-        return(
-        <Animated.View key={ item.id } style={ styles.imageContainer }>
-            <Image 
-            source={ item.uri }
-            style={ styles.image }
-            />
-       </Animated.View>  
-        );
-    })
+const rotate = position => {
+  return position.x.interpolate({
+    inputRange: [-SCREEN_WIDTH / 2,0 , SCREEN_WIDTH / 2],
+    outputRange: ['-10deg', '0deg', '10deg'],
+    extrapolate: 'clamp'
+  });
 }
- 
+
+const likeOpacity = position =>{
+  return position.x.interpolate({
+    inputRange: [-SCREEN_WIDTH / 2,0 , SCREEN_WIDTH / 2],
+    outputRange: [0, 0, 1],
+    extrapolate: 'clamp'
+  });
+}
+
+const dislikeOpacity = position => {
+  return position.x.interpolate({
+    inputRange: [-SCREEN_WIDTH / 2,0 , SCREEN_WIDTH / 2],
+    outputRange: [1, 0, 0],
+    extrapolate: 'clamp'
+  })
+}
+
+const nextCardOpacity = position => {
+  return position.x.interpolate({
+    inputRange: [-SCREEN_WIDTH / 2,0 , SCREEN_WIDTH / 2],
+    outputRange: [1, 0, 1],
+    extrapolate: 'clamp'
+  })
+}
+
 const Start = props => {
 
-  return(
+  const [position, setPosition] = useState(new Animated.ValueXY());
+  const rotateAndTranslate = { transform: [{ rotate: rotate(position)}, ...position.getTranslateTransform()] }
+
+  const panResponder = React.useMemo(() => PanResponder.create({
+      
+      onStartShouldSetPanResponder: () => true,
+  
+      onPanResponderMove: (evt ,gestureState) => {
+        setPosition(new Animated.ValueXY({ x: gestureState.dx, y: gestureState.dy}));
+      },
+
+      onPanResponderRelease: (evt, gestureState) => {
+        if(gestureState.dx > 120) {
+          Animated.spring(position, setPosition(new Animated.ValueXY({ x: SCREEN_WIDTH + 100, y: gestureState.dy}))).start(
+            props.onSetIndex(index => index + 1), setPosition(new Animated.ValueXY)
+          )
+        } else if (gestureState.dx < -120) {
+          Animated.spring(position, setPosition(new Animated.ValueXY({ x: -SCREEN_WIDTH - 100, y: gestureState.dy}))).start(
+            props.onSetIndex(index => index + 1), setPosition(new Animated.ValueXY)
+          )
+        } else {
+          setPosition(new Animated.ValueXY)
+        }
+      }
+    }), []);
+
+  const renderQuestions = () => {
+    return Questions.map((item, i) => {
+      if ( i < props.index) {
+        return null;
+      } else if (i == props.index) {
+        return(
+          <Animated.View {...panResponder.panHandlers} key={ i } style={[rotateAndTranslate, styles.mainView]}>
+
+            <Animated.View style={[styles.likeContainer, {opacity: likeOpacity(position)}]}>
+              <Text style={styles.likeText}>LIKE</Text>
+            </Animated.View>
+
+            <Animated.View style={[styles.dislikeContainer, {opacity: dislikeOpacity(position)}]}>
+              <Text style={styles.dislikeText}>NOPE</Text>
+            </Animated.View>
+    
+            <Image source={ item.uri } style={styles.image}/>
+          </Animated.View>
+        );
+      } else {
+        return(
+          <Animated.View key={ i } style={[styles.mainView, {opacity: nextCardOpacity(position)}]}>
+            <Image source={ item.uri } style={styles.image}/>
+          </Animated.View>
+        );
+      }
+    }).reverse()
+  };
+
+  const rendetQuestionText = () => {
+    if (props.index < Questions.length) {
+      return(
+        <Text>{ Questions[props.index].text }</Text>
+      );
+    } else {
+      return null;
+    }
+  };
+  
+  return (
     <Modal visible={ props.visible } animationType='slide'>
-      <View style={ styles.mainContainer }>
-        <View style={ styles.top }>
-            {/* top */}
+      <View style={{ flex: 1 }}>
+        <View style={{ height: 60, alignItems: 'center' }}>
+          <View style={{ flex: 1 }}>
+            { rendetQuestionText() }
+          </View>
         </View>
-        <View style={ styles.pictureContainer }>
-          { this.rendetImages() }
+        <View style={{ flex: 1 }}>
+          { renderQuestions() }
         </View>
-        <View style={ styles.bottom }>
+        <View style={{ height: 60, alignItems: 'center' }}>
+          <View style={{ flex: 1, width: '50%' }}>
             <Button 
               title='back'
               onPress={ props.onHandleSetVisibleOf }
-              type='outline'
               buttonStyle={ styles.button }
             />
+          </View>
         </View>
       </View>
     </Modal>
@@ -58,44 +136,60 @@ const Start = props => {
 }
 
 const styles = StyleSheet.create({
-    mainContainer: {
-      flex: 1,
-    },
+  mainView: {
+    height: SCREEN_HEIGHT - 120,
+    width: SCREEN_WIDTH,
+    padding: 10,
+    position: 'absolute',
+  },
 
-    pictureContainer: {
-      flex: 1,
-    },
+  likeContainer: {
+    position: 'absolute',
+    zIndex: 1000,
+    top: 40,
+    left: 30,
+    transform: [{rotate: '-30deg'}]
+  },
 
-    image: {
-        flex: 1,
-        height: null,
-        width: null,
-        resizeMode: 'cover',
-        borderRadius: 20
-    },
+  dislikeContainer: {
+    position: 'absolute',
+    zIndex: 1000,
+    top: 40,
+    right: 30,
+    transform: [{rotate: '30deg'}]
+  },
 
-    imageContainer: {
-        height:SCREEN_HEIGHT - 150,
-        width: SCREEN_WIDTH,
-        padding: 5,
-        position: 'absolute'
-    },
+  likeText: {
+    borderWidth: 1,
+    borderColor: 'green',
+    color: 'green',
+    fontSize: 32,
+    fontWeight: '800',
+    padding: 10
+  },
 
-    top: {
-        height: 60
-    },
+  dislikeText: {
+    borderWidth: 1,
+    borderColor: 'red',
+    color: 'red',
+    fontSize: 32,
+    fontWeight: '800',
+    padding: 10
+  },
 
-    bottom: {
-        height: 90,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
+  image: {
+    flex:1,
+    height: null,
+    width: null,
+    resizeMode: 'cover',
+    borderRadius: 20,
+  },
 
-    button: {
-        width: 100,
-        borderWidth: 3,
-        borderRadius: 20,
-      }
-  });
+  button: {
+    top: 17,
+    borderRadius: 20,
+    backgroundColor: '#b30c00'
+  }
+});
 
 export default Start;

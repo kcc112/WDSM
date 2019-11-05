@@ -6,26 +6,28 @@ import Start from './components/Start'
 
 export default function App() {
   const [isVisible, setVisible] = useState(false);
+  const [index, setIndex] = useState(0);
 
-  const handleSetVisibleOn = () => {
-    setVisible(true)
-  }
+  const handleStartButtonClick = () => {
+    setIndex(0);
+    setVisible(true);
+  };
 
   const handleSetVisibleOf = () => {
-    setVisible(false)
-  }
+    setVisible(false);
+  };
 
 
   const redirectToWebsite = () => {
     WebBrowser.openBrowserAsync('https://programy.p.lodz.pl/ectslabel-web/?l=pl&s=programKsztalcenia&pk=informatyka')
-  }
+  };
 
   return (
     <View style={ styles.mainContainer }>
       <View style={ styles.logoContainer }>
         <Image
-          source={ require('./assets/logo.png') }
-          resizeMode='center'
+          source={ require('./assets/logo.jpg') }
+          style={{flex: 1, height: null, width: null, resizeMode: 'cover'}}
         />
       </View>
       <View style={ styles.buttonContainer }>
@@ -33,15 +35,13 @@ export default function App() {
           <Button
             title='Start'
             buttonStyle={ styles.buttonColor }
-            onPress={ handleSetVisibleOn }
-            type='outline'
+            onPress={ handleStartButtonClick }
           />
         </View>
         <View style={ styles.button }>
           <Button
             buttonStyle={ styles.buttonColor }
             title='Previous result'
-            type='outline'
           />
         </View>
         <View style={ styles.button }>
@@ -49,16 +49,14 @@ export default function App() {
             buttonStyle={ styles.buttonColor }
             title='Info'
             onPress={ redirectToWebsite } 
-            type='outline'
           />
         </View>
-      </View>
-      <View style={ styles.footer }>
-          <Text>Authors: Kamil Celejewski, Mateusz Wasilewski, Jędrzej Dobrucki</Text>
       </View>
       <Start
         visible={ isVisible }
         onHandleSetVisibleOf={ handleSetVisibleOf }
+        index={ index }
+        onSetIndex={ setIndex }
       />
     </View>
   );
@@ -77,10 +75,7 @@ const styles = StyleSheet.create({
   },
 
   logoContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    marginTop: '-20%'
+    flex: 1
   },
 
   button: {
@@ -89,14 +84,7 @@ const styles = StyleSheet.create({
   },
 
   buttonColor: {
-    borderWidth: 3,
     borderRadius: 20,
+    backgroundColor: '#b30c00'
   },
-
-  footer: {
-    height: 60,
-    width: '100%',
-    backgroundColor: 'white',
-    justifyContent: 'center',
-  }
 });
