@@ -8,17 +8,17 @@ import { Button } from 'react-native-elements'
 const ScoreScreen = props => {
 
     const dataYes = [
-        { id: 1, approvals: 3 },
-        { id: 2, approvals: 9 },
-        { id: 3, approvals: 7 },
-        { id: 4, approvals: 5 }
+        { id: 1, approvals: 3, name: "Fakultet1" },
+        { id: 2, approvals: 9, name: "Fakultet2" },
+        { id: 3, approvals: 7, name: "Fakultet3" },
+        { id: 4, approvals: 5, name: "Fakultet4" }
     ];
 
     const dataNo = [
-        { id: 1, approvals: 10-dataYes[0].approvals, name: "Fakultet1" },
-        { id: 2, approvals: 10-dataYes[1].approvals, name: "Fakultet2" },
-        { id: 3, approvals: 10-dataYes[2].approvals, name: "Fakultet3" },
-        { id: 4, approvals: 10-dataYes[3].approvals, name: "Fakultet4" }
+        { id: 1, approvals: 10-dataYes[0].approvals },
+        { id: 2, approvals: 10-dataYes[1].approvals },
+        { id: 3, approvals: 10-dataYes[2].approvals },
+        { id: 4, approvals: 10-dataYes[3].approvals }
     ];
 
 
@@ -45,7 +45,7 @@ const ScoreScreen = props => {
                 <VictoryAxis
                 dependent Axis
                     tickValues={[1, 2, 3, 4]}
-                    tickFormat={[dataNo[3].name, dataNo[2].name, dataNo[1].name, dataNo[0].name]}
+                    tickFormat={[dataYes[3].name, dataYes[2].name, dataYes[1].name, dataYes[0].name]}
                     
                 />
                 <VictoryStack
