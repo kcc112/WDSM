@@ -28,10 +28,10 @@ const ScoreScreen = props => {
             Axis
             tickValues={[1, 2, 3, 4]}
             tickFormat={[
-              props.dataYes[3].name,
+              props.dataYes[0].name,
               props.dataYes[1].name,
               props.dataYes[2].name,
-              props.dataYes[0].name
+              props.dataYes[3].name
             ]}
           />
 
@@ -79,10 +79,10 @@ const ScoreScreen = props => {
                 { id: 4, approvals: 0, name: "WZAIP" }
               ]);
               props.setDataYesNo([
-                { id: 1, approvals: 10, name: "DGK" },
-                { id: 2, approvals: 10, name: "IRZ" },
-                { id: 3, approvals: 10, name: "WDSM" },
-                { id: 4, approvals: 10, name: "WZAIP" }
+                { id: 1, approvals: 4, name: "DGK" },
+                { id: 2, approvals: 4, name: "IRZ" },
+                { id: 3, approvals: 4, name: "WDSM" },
+                { id: 4, approvals: 4, name: "WZAIP" }
               ]);
             }}
           ></Button>
@@ -99,10 +99,10 @@ const ScoreScreen = props => {
                 { id: 4, approvals: 0, name: "WZAIP" }
               ]);
               props.setDataYesNo([
-                { id: 1, approvals: 10, name: "DGK" },
-                { id: 2, approvals: 10, name: "IRZ" },
-                { id: 3, approvals: 10, name: "WDSM" },
-                { id: 4, approvals: 10, name: "WZAIP" }
+                { id: 1, approvals: 4, name: "DGK" },
+                { id: 2, approvals: 4, name: "IRZ" },
+                { id: 3, approvals: 4, name: "WDSM" },
+                { id: 4, approvals: 4, name: "WZAIP" }
               ]);
             }}
           ></Button>
