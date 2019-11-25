@@ -2,7 +2,7 @@ export const Questions = [
     { id: "1", uri: require("../assets/TPA_1.png"), text: "Lubisz wyzwania i programowanie obiektowe? Chesz zrozumieć język programowania od podstaw?", name: "DGK" },//DGK - dwuwymiarowe gry komputerowe -> TPA - technologie programowania adaptacyjnego
     { id: "2", uri: require("../assets/TPA_2.png"), text: "Chcesz poznać czym są wzorce projektowe i jak wykorzystywać je w praktyce?", name: "DGK" },
     { id: "3", uri: require("../assets/TPA_3.png"), text: "Masz dość nudnych, tradycyjnych wykładów? Pragniesz prowadzić aktywnie dyskusje z prowadzącym i wspólnie rozwiązywać problemy?", name: "DGK" },
-    { id: "4", uri: require("../assets/splash.png"), text: "Chciałbyś nauczyć się efektywnie korzystać ze zintegrowanego środowiska programistycznego?", name: "DGK" },
+    { id: "4", uri: require("../assets/TPA_4.png"), text: "Chciałbyś nauczyć się efektywnie korzystać ze zintegrowanego środowiska programistycznego?", name: "DGK" },
     { id: "5", uri: require("../assets/PBS_1.png"), text: "Chcesz zdobyć umiejętności identyfikowania podatności na ataki aplikacji i systemów IoT?", name: "IRZ" },
     { id: "6", uri: require("../assets/PBS_2.png"), text: "Pragniesz umieć wykryć nieuprawnioną aktywność w swoim systemie?", name: "IRZ" },//IRZ - internet rzeczy
     { id: "7", uri: require("../assets/PBS_3.png"), text: "Po ukończeniu kursu będziesz w stanie tworzyć wielowarstwowe zabezpieczenia systemów IoT, zainteresowany?", name: "IRZ" },
