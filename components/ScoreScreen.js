@@ -28,9 +28,9 @@ const ScoreScreen = props => {
             Axis
             tickValues={[1, 2, 3, 4]}
             tickFormat={[
-              props.dataYes[0].name,
-              props.dataYes[1].name,
-              props.dataYes[2].name,
+              "TPA",
+              "PBS",
+              "ZZP",
               props.dataYes[3].name
             ]}
           />

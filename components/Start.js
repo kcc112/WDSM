@@ -150,7 +150,7 @@ const Start = props => {
 
   const rendetQuestionText = () => {
     if (props.index < Questions.length) {
-      return <Text>{Questions[props.index].text}</Text>;
+      return <Text style={{fontSize: 16}}>{Questions[props.index].text}</Text>;
     } else {
       return null;
     }
@@ -160,10 +160,10 @@ const Start = props => {
   return (
     <Modal visible={props.visible} animationType="slide">
       <View style={{ flex: 1 }}>
-        <View style={{ height: 60, alignItems: "center" }}>
-          <View style={{ flex: 1 }}>{rendetQuestionText()}</View>
+        <View style={{ height: 100, alignItems: "center" , paddingTop: 30}}>
+          <View style={{ width: '100%', flexGrow: 1, flex: 1, alignItems: 'center' }}>{rendetQuestionText()}</View>
         </View>
-        <View style={{ flex: 1 }}>{renderQuestions()}</View>
+        <View style={{ flex: 1, width: '90%', height: '90%'}}>{renderQuestions()}</View>
         <View style={{ height: 60, alignItems: "center" }}>
           <View style={{ flex: 1, width: "50%" }}>
             <Button
