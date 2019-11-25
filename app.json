@@ -4,6 +4,12 @@
     "slug": "WDSM",
     "privacy": "public",
     "sdkVersion": "35.0.0",
+    "android": {
+      "package": "com.celejewski.wdsm",
+      "versionCode": 1,
+      "permissions": [],
+      "icon": "./assets/icon2.png"
+    },
     "platforms": [
       "ios",
       "android",
