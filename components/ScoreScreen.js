@@ -17,7 +17,7 @@ const ScoreScreen = props => {
 
   return (
     <View style={styles.screen}>
-      <View style={{ height: 120, alignItems: "center" }}>
+      <View style={{ height: 60, alignItems: "center" }}>
         <Text style={styles.sumUp}>Summary</Text>
       </View>
 
@@ -86,6 +86,12 @@ const ScoreScreen = props => {
               props.setDataYesNo(props.startNoArray);
             }}
           ></Button>
+          <Button
+            buttonStyle={styles.buttonColor}
+            title="Info"
+            color="black"
+            onPress={ props.redirectToWebsite }
+          ></Button>
         </View>
       </View>
     </View>
@@ -106,7 +112,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flex: 1,
     flexDirection: "row",
-    width: "70%",
+    width: "100%",
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 15

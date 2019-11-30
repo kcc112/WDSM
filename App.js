@@ -7,17 +7,17 @@ import ScoreScreen from "./components/ScoreScreen"
 import { Questions } from "./components/Questions"
 
 const startYesArray = [
-  { id: 1, approvals: 0, name: "TPA" },
-  { id: 2, approvals: 0, name: "PBS" },
-  { id: 3, approvals: 0, name: "ZZP" },
-  { id: 4, approvals: 0, name: "WZAIP" }
+  { id: 1, approvals: 0, name: "TPA", fulname: "Technologie Programowania Adaptacyjnego" },
+  { id: 2, approvals: 0, name: "PBS", fulname: "Podstawy bezpieczeństwa systemów Internetu Rzeczy" },
+  { id: 3, approvals: 0, name: "ZZP", fulname: "Zaawansowane zagadnienia programowania w języku Java" },
+  { id: 4, approvals: 0, name: "WZAIP", fulname: "Wybrane zagadnienia algorytmiki i programowania" }
 ];
 
 const startNoArray = [
-  { id: 1, approvals: 4, name: "TPA" },
-  { id: 2, approvals: 4, name: "PBS" },
-  { id: 3, approvals: 4, name: "ZZP" },
-  { id: 4, approvals: 4, name: "WZAIP" }
+  { id: 1, approvals: 4, name: "TPA", fulname: "Technologie Programowania Adaptacyjnego" },
+  { id: 2, approvals: 4, name: "PBS", fulname: "Podstawy bezpieczeństwa systemów Internetu Rzeczy" },
+  { id: 3, approvals: 4, name: "ZZP", fulname: "Zaawansowane zagadnienia programowania w języku Java" },
+  { id: 4, approvals: 4, name: "WZAIP", fulname: "Wybrane zagadnienia algorytmiki i programowania" }
 ];
 
 
@@ -61,7 +61,7 @@ export default function App() {
 
 
   const redirectToWebsite = () => {
-    WebBrowser.openBrowserAsync('https://programy.p.lodz.pl/ectslabel-web/?l=pl&s=programKsztalcenia&pk=informatyka')
+    WebBrowser.openBrowserAsync('https://programy.p.lodz.pl/ectslabel-web/kierunekSiatka.jsp?l=pl&s=programSiatka&w=informatyka&p=5613&v=1&pkId=100&stopien=studia+pierwszego+stopnia&sp=1')
   };
 
 
@@ -121,6 +121,7 @@ export default function App() {
         scoreVisiblitySetter={ previousResultHandler }
         startNoArray={ startNoArray }
         startYesArray={ startYesArray }
+        redirectToWebsite={ redirectToWebsite }
       />
     </View>)
   }
