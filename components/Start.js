@@ -212,8 +212,8 @@ const styles = StyleSheet.create({
 
   likeText: {
     borderWidth: 1,
-    borderColor: "green",
-    color: "green",
+    borderColor: "#39e600",
+    color: "#39e600",
     fontSize: 32,
     fontWeight: "800",
     padding: 10

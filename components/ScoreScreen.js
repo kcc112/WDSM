@@ -28,10 +28,10 @@ const ScoreScreen = props => {
             Axis
             tickValues={[1, 2, 3, 4]}
             tickFormat={[
-              "TPA",
-              "PBS",
-              "ZZP",
-              props.dataYes[3].name
+              props.dataYes[0].name,
+              props.dataYes[1].name,
+              props.dataYes[2].name,
+              props.dataYes[3].name,
             ]}
           />
 
@@ -72,18 +72,8 @@ const ScoreScreen = props => {
             color="black"
             onPress={() => {
               retryHandler();
-              props.setDataYes([
-                { id: 1, approvals: 0, name: "DGK" },
-                { id: 2, approvals: 0, name: "IRZ" },
-                { id: 3, approvals: 0, name: "WDSM" },
-                { id: 4, approvals: 0, name: "WZAIP" }
-              ]);
-              props.setDataYesNo([
-                { id: 1, approvals: 4, name: "DGK" },
-                { id: 2, approvals: 4, name: "IRZ" },
-                { id: 3, approvals: 4, name: "WDSM" },
-                { id: 4, approvals: 4, name: "WZAIP" }
-              ]);
+              props.setDataYes(props.startYesArray);
+              props.setDataYesNo(props.startNoArray);
             }}
           ></Button>
           <Button
@@ -92,18 +82,8 @@ const ScoreScreen = props => {
             color="black"
             onPress={() => {
               props.scoreVisiblitySetter();
-              props.setDataYes([
-                { id: 1, approvals: 0, name: "DGK" },
-                { id: 2, approvals: 0, name: "IRZ" },
-                { id: 3, approvals: 0, name: "WDSM" },
-                { id: 4, approvals: 0, name: "WZAIP" }
-              ]);
-              props.setDataYesNo([
-                { id: 1, approvals: 4, name: "DGK" },
-                { id: 2, approvals: 4, name: "IRZ" },
-                { id: 3, approvals: 4, name: "WDSM" },
-                { id: 4, approvals: 4, name: "WZAIP" }
-              ]);
+              props.setDataYes(props.startYesArray);
+              props.setDataYesNo(props.startNoArray);
             }}
           ></Button>
         </View>

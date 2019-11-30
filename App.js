@@ -6,30 +6,34 @@ import Start from './components/Start'
 import ScoreScreen from "./components/ScoreScreen"
 import { Questions } from "./components/Questions"
 
+const startYesArray = [
+  { id: 1, approvals: 0, name: "TPA" },
+  { id: 2, approvals: 0, name: "PBS" },
+  { id: 3, approvals: 0, name: "ZZP" },
+  { id: 4, approvals: 0, name: "WZAIP" }
+];
+
+const startNoArray = [
+  { id: 1, approvals: 4, name: "TPA" },
+  { id: 2, approvals: 4, name: "PBS" },
+  { id: 3, approvals: 4, name: "ZZP" },
+  { id: 4, approvals: 4, name: "WZAIP" }
+];
+
 
 export default function App() {
   const [isVisible, setVisible] = useState(false);
   const [index, setIndex] = useState(0);
   let [indexForQuestion, setIndexForQuestion] = useState(0);
-  const [dataYes, setDataYes] = useState([
-    { id: 1, approvals: 0, name: "DGK" },
-    { id: 2, approvals: 0, name: "WDSM"},
-    { id: 3, approvals: 0, name: "IRZ" },
-    { id: 4, approvals: 0, name: "WZAIP" }
-  ]);
-  const [dataNo, setDataNo] = useState([
-    { id: 1, approvals: 4, name: "DGK" },
-    { id: 2, approvals: 4, name: "WDSM" },
-    { id: 3, approvals: 4, name: "IRZ" },
-    { id: 4, approvals: 4, name: "WZAIP" }
-  ]);
+  const [dataYes, setDataYes] = useState(startYesArray);
+  const [dataNo, setDataNo] = useState(startNoArray);
   const [scoreVisiblity, setScoreVisibility] = useState(false);
 
   const setAprovalYes = () => {
-    const name = Questions[indexForQuestion].name
+    const name = Questions[indexForQuestion].name;
     dataYes.find(item => item.name === name).approvals += 1;
     dataNo.find(item => item.name === name).approvals -= 1;
-    indexForQuestion += 1
+    indexForQuestion += 1;
   }
 
   const setAprovalNo = () => {
@@ -115,6 +119,8 @@ export default function App() {
         dataNo={ dataNo }
         startAgain={ handleStartButtonClick }
         scoreVisiblitySetter={ previousResultHandler }
+        startNoArray={ startNoArray }
+        startYesArray={ startYesArray }
       />
     </View>)
   }
