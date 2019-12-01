@@ -6,19 +6,27 @@ import Start from './components/Start'
 import ScoreScreen from "./components/ScoreScreen"
 import { Questions } from "./components/Questions"
 
-const startYesArray = [
+const startYesArrayClean = [
   { id: 1, approvals: 0, name: "TPA" },
   { id: 2, approvals: 0, name: "PBS" },
   { id: 3, approvals: 0, name: "ZZP" },
   { id: 4, approvals: 0, name: "WZAIP" }
 ];
 
-const startNoArray = [
+const startNoArrayClean = [
   { id: 1, approvals: 4, name: "TPA" },
   { id: 2, approvals: 4, name: "PBS" },
   { id: 3, approvals: 4, name: "ZZP" },
   { id: 4, approvals: 4, name: "WZAIP" }
 ];
+
+const startYesArray = []
+const startNoArray = []
+for(var i=0; i<startNoArrayClean.length; i++){
+  startYesArray[i]=Object.assign({}, startYesArrayClean[i]);
+  startNoArray[i]=Object.assign({}, startNoArrayClean[i]);
+}
+
 
 
 export default function App() {
@@ -42,6 +50,13 @@ export default function App() {
 
   const handleStartButtonClick = () => {
     setIndex(0);
+
+    for(var i=0; i<dataYes.length; i++){
+      dataYes[i].approvals=0;
+      dataNo[i].approvals=4;
+    }
+
+
     setVisible(true);
   };
 
@@ -50,6 +65,7 @@ export default function App() {
   };
 
   const previousResultHandler = () => {
+    console.log(scoreVisiblity)
     if(scoreVisiblity == false) {
       setScoreVisibility(true);
     }
@@ -106,6 +122,7 @@ export default function App() {
           scoreVisiblitySetter={ previousResultHandler }
           setAprovalYes={ setAprovalYes }
           setAprovalNo={ setAprovalNo }
+          scoreScreen = { previousResultHandler }
         />
       </View>
     );
@@ -113,15 +130,11 @@ export default function App() {
     return (
     <View style={styles.sceen}>
       <ScoreScreen
-        setDataYes={ setDataYes }
-        setDataYesNo={ setDataNo }
         dataYes={ dataYes }
         dataNo={ dataNo }
         startAgain={ handleStartButtonClick }
         scoreVisiblitySetter={ previousResultHandler }
-        startNoArray={ startNoArray }
-        startYesArray={ startYesArray }
-        redirectToWebsite={ redirectToWebsite }
+        redirectToWebsite={ redirectToWebsite } 
       />
     </View>)
   }

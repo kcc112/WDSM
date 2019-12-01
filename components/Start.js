@@ -177,8 +177,11 @@ const Start = props => {
     </Modal>
   );
   } else {
+    
     props.onHandleSetVisibleOf();
+    props.scoreScreen();
     return null;
+    
   }
 };
 

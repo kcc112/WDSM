@@ -72,18 +72,14 @@ const ScoreScreen = props => {
             color="black"
             onPress={() => {
               retryHandler();
-              props.setDataYes(props.startYesArray);
-              props.setDataYesNo(props.startNoArray);
             }}
           ></Button>
           <Button
             buttonStyle={styles.buttonColor}
             title="Home"
             color="black"
-            onPress={() => {
+            onPress={() => { 
               props.scoreVisiblitySetter();
-              props.setDataYes(props.startYesArray);
-              props.setDataYesNo(props.startNoArray);
             }}
           ></Button>
           <Button
