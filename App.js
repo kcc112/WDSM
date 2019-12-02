@@ -65,8 +65,8 @@ export default function App() {
   };
 
   const previousResultHandler = () => {
-    console.log(scoreVisiblity)
     if(scoreVisiblity == false) {
+      setIndex(0);
       setScoreVisibility(true);
     }
     else {
