@@ -27,6 +27,7 @@ const ScoreScreen = props => {
             dependent
             Axis
             tickValues={[1, 2, 3, 4]}
+            style={{ axis: {stroke: "none"} }}
             tickFormat={[
               props.dataYes[0].name,
               props.dataYes[1].name,
@@ -36,29 +37,22 @@ const ScoreScreen = props => {
           />
 
           <VictoryStack
-            colorScale={["green", "red"]}
-            animate={{
-              duration: 2000,
-            }}
+            colorScale={["green", "white"]}
             horizontal={true}
           >
             <VictoryBar
+             cornerRadius={{ top: 6, bottom: 6 }}
              data={props.dataYes}
              x="id"
              y="approvals"
-             animate={{
-                duration: 500,
-             }}
+             animate={{ duration: 500 }}
+             labels={({ datum }) => `${((datum.approvals) / 4) * 100} %` }
             />
-
             <VictoryBar
               data={props.dataNo}
               x="id"
               y="approvals"
               animate={{ duration: 500 }}
-              labels={({ datum }) =>
-                ` ${((4 - datum.approvals) / 4) * 100} %`
-              }
             />
           </VictoryStack>
         </VictoryChart>

@@ -150,7 +150,11 @@ const Start = props => {
 
   const rendetQuestionText = () => {
     if (props.index < Questions.length) {
-      return <Text style={{fontSize: 16}}>{Questions[props.index].text}</Text>;
+      return(
+        <View style={{ flex: 1, alignItems: "center"}}>
+          <Text style={{fontSize: 16, textAlign: "center", fontWeight: "bold"}}>{Questions[props.index].text}</Text>
+        </View>
+      );
     } else {
       return null;
     }
