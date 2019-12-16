@@ -7,17 +7,17 @@ import ScoreScreen from "./components/ScoreScreen"
 import { Questions } from "./components/Questions"
 
 const startYesArrayClean = [
-  { id: 1, approvals: 0, name: "TPA" },
-  { id: 2, approvals: 0, name: "PBS" },
-  { id: 3, approvals: 0, name: "ZZP" },
-  { id: 4, approvals: 0, name: "WZAIP" }
+  { id: 1, approvals: 0, name: "TPA" , fullName: "Technologie programowania adaptacyjnego"},
+  { id: 2, approvals: 0, name: "PBS" , fullName: "Podstawy bezpieczeństwa systemów"},
+  { id: 3, approvals: 0, name: "ZZP" , fullName: "Zaawansowane zagadnienia programowania"},
+  { id: 4, approvals: 0, name: "WZAIP" , fullName: "Wybrane zagadnienia algorytmiki i programowania"}
 ];
 
 const startNoArrayClean = [
-  { id: 1, approvals: 4, name: "TPA" },
-  { id: 2, approvals: 4, name: "PBS" },
-  { id: 3, approvals: 4, name: "ZZP" },
-  { id: 4, approvals: 4, name: "WZAIP" }
+  { id: 1, approvals: 4, name: "TPA" , fullName: "Technologie programowania adaptacyjnego"},
+  { id: 2, approvals: 4, name: "PBS" , fullName: "Podstawy bezpieczeństwa systemów"},
+  { id: 3, approvals: 4, name: "ZZP" , fullName: "Zaawansowane zagadnienia programowania"},
+  { id: 4, approvals: 4, name: "WZAIP" , fullName: "Wybrane zagadnienia algorytmiki i programowania"}
 ];
 
 const startYesArray = []

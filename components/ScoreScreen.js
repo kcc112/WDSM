@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Alert } from "react-native";
 import {
   VictoryBar,
   VictoryStack,
@@ -40,13 +40,22 @@ const ScoreScreen = props => {
             colorScale={["green", "white"]}
             horizontal={true}
           >
-            <VictoryBar
+            <VictoryBar name="Bar-1"
              cornerRadius={{ top: 6, bottom: 6 }}
              data={props.dataYes}
              x="id"
              y="approvals"
              animate={{ duration: 500 }}
              labels={({ datum }) => `${((datum.approvals) / 4) * 100} %` }
+             events={[{
+              childName: "Bar-1",
+              target: "data",
+              eventHandlers: {
+                onPressIn: (evt, clickedProps) => Alert.alert(`(${clickedProps.datum.name})` ,`(${clickedProps.datum.fullName})`)
+              }
+            }]}
+
+          
             />
             <VictoryBar
               data={props.dataNo}
