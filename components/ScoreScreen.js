@@ -17,8 +17,10 @@ const ScoreScreen = props => {
 
   return (
     <View style={styles.screen}>
-      <View style={{ height: 60, alignItems: "center" }}>
-        <Text style={styles.sumUp}>Summary</Text>
+      <View style={{ height: 150, alignItems: "center"}}>
+        <View style={{ marginTop: 50}}>
+          <Text style={styles.sumUp}>Summary</Text>
+        </View>
       </View>
 
       <View style={{ flex: 1, justifyContent: "center" }}>
@@ -103,7 +105,6 @@ const styles = StyleSheet.create({
   },
 
   sumUp: {
-    marginTop: 60,
     fontSize: 40,
     fontWeight: "bold"
   },
