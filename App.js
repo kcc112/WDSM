@@ -14,10 +14,10 @@ const startYesArrayClean = [
 ];
 
 const startNoArrayClean = [
-  { id: 1, approvals: 4, name: "TPA" , fullName: "Technologie programowania adaptacyjnego"},
-  { id: 2, approvals: 4, name: "PBS" , fullName: "Podstawy bezpieczeństwa systemów"},
-  { id: 3, approvals: 4, name: "ZZP" , fullName: "Zaawansowane zagadnienia programowania"},
-  { id: 4, approvals: 4, name: "WZAIP" , fullName: "Wybrane zagadnienia algorytmiki i programowania"}
+  { id: 1, approvals: 4, name: "TPA" , fullName: "Technologie programowania adaptacyjnego", url: "https://programy.p.lodz.pl/ectslabel-web/przedmiot_1.jsp?l=pl&idPrzedmiotu=159897&pkId=100&s=6&t=1&j=0&w=informatyka"},
+  { id: 2, approvals: 4, name: "PBS" , fullName: "Podstawy bezpieczeństwa systemów", url: "https://programy.p.lodz.pl/ectslabel-web/przedmiot_1.jsp?l=pl&idPrzedmiotu=159894&pkId=100&s=6&t=1&j=0&w=informatyka"},
+  { id: 3, approvals: 4, name: "ZZP" , fullName: "Zaawansowane zagadnienia programowania", url: "https://programy.p.lodz.pl/ectslabel-web/przedmiot_1.jsp?l=pl&idPrzedmiotu=159900&pkId=100&s=6&t=1&j=0&w=informatyka"},
+  { id: 4, approvals: 4, name: "WZAIP" , fullName: "Wybrane zagadnienia algorytmiki i programowania", url: "https://programy.p.lodz.pl/ectslabel-web/przedmiot_1.jsp?l=pl&idPrzedmiotu=159899&pkId=100&s=6&t=1&j=0&w=informatyka"}
 ];
 
 const startYesArray = []
@@ -100,7 +100,7 @@ export default function App() {
           </View>
           <View style={styles.button}>
             <Button
-              title='Results'
+              title='Wyniki'
               buttonStyle={ styles.buttonColor }
               onPress={ previousResultHandler }
             />
