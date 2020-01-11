@@ -7,12 +7,17 @@ import {
   VictoryAxis
 } from "victory-native";
 import { Button } from "react-native-elements";
+import * as WebBrowser from 'expo-web-browser';
 
 const ScoreScreen = props => {
 
   const retryHandler = () => {
     props.scoreVisiblitySetter();
     props.startAgain();
+  };
+
+  const redirectToWebsite = (url) => {
+    WebBrowser.openBrowserAsync(url)
   };
 
   return (
@@ -42,7 +47,7 @@ const ScoreScreen = props => {
             colorScale={["green", "white"]}
             horizontal={true}
           >
-            <VictoryBar name="Bar-1"
+            <VictoryBar
              cornerRadius={{ top: 6, bottom: 6 }}
              data={props.dataYes}
              x="id"
@@ -50,10 +55,20 @@ const ScoreScreen = props => {
              animate={{ duration: 500 }}
              labels={({ datum }) => `${((datum.approvals) / 4) * 100} %` }
              events={[{
-              childName: "Bar-1",
+              childName: "all",
               target: "data",
               eventHandlers: {
-                onPressIn: (evt, clickedProps) => Alert.alert(`(${clickedProps.datum.name})` ,`(${clickedProps.datum.fullName})`)
+                onPressIn: (evt, clickedProps) => Alert.alert(`${clickedProps.datum.name}` ,`${clickedProps.datum.fullName}`, 
+                [
+                  {
+                  text: 'OK', 
+                  style: 'cancel' 
+                  },
+                  {
+                    text: 'Info',
+                    onPress: () => redirectToWebsite(clickedProps.datum.url),
+                  }
+                ])
               }
             }]}
 
@@ -86,12 +101,6 @@ const ScoreScreen = props => {
             onPress={() => { 
               props.scoreVisiblitySetter();
             }}
-          ></Button>
-          <Button
-            buttonStyle={styles.buttonColor}
-            title="Info"
-            color="black"
-            onPress={ props.redirectToWebsite }
           ></Button>
         </View>
       </View>

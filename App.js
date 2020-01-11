@@ -7,10 +7,10 @@ import ScoreScreen from "./components/ScoreScreen"
 import { Questions } from "./components/Questions"
 
 const startYesArrayClean = [
-  { id: 1, approvals: 0, name: "TPA" , fullName: "Technologie programowania adaptacyjnego"},
-  { id: 2, approvals: 0, name: "PBS" , fullName: "Podstawy bezpieczeństwa systemów"},
-  { id: 3, approvals: 0, name: "ZZP" , fullName: "Zaawansowane zagadnienia programowania"},
-  { id: 4, approvals: 0, name: "WZAIP" , fullName: "Wybrane zagadnienia algorytmiki i programowania"}
+  { id: 1, approvals: 0, name: "TPA" , fullName: "Technologie programowania adaptacyjnego", url: "https://programy.p.lodz.pl/ectslabel-web/przedmiot_1.jsp?l=pl&idPrzedmiotu=159897&pkId=100&s=6&t=1&j=0&w=informatyka"},
+  { id: 2, approvals: 0, name: "PBS" , fullName: "Podstawy bezpieczeństwa systemów", url: "https://programy.p.lodz.pl/ectslabel-web/przedmiot_1.jsp?l=pl&idPrzedmiotu=159894&pkId=100&s=6&t=1&j=0&w=informatyka"},
+  { id: 3, approvals: 0, name: "ZZP" , fullName: "Zaawansowane zagadnienia programowania", url: "https://programy.p.lodz.pl/ectslabel-web/przedmiot_1.jsp?l=pl&idPrzedmiotu=159900&pkId=100&s=6&t=1&j=0&w=informatyka"},
+  { id: 4, approvals: 0, name: "WZAIP" , fullName: "Wybrane zagadnienia algorytmiki i programowania", url: "https://programy.p.lodz.pl/ectslabel-web/przedmiot_1.jsp?l=pl&idPrzedmiotu=159899&pkId=100&s=6&t=1&j=0&w=informatyka"}
 ];
 
 const startNoArrayClean = [
