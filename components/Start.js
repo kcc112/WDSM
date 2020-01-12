@@ -120,7 +120,7 @@ const Start = props => {
             <Animated.View
               style={[styles.likeContainer, { opacity: likeOpacity(position) }]}
             >
-              <Text style={styles.likeText}>LIKE</Text>
+              <Text style={styles.likeText}>Tak</Text>
             </Animated.View>
 
             <Animated.View
@@ -129,7 +129,7 @@ const Start = props => {
                 { opacity: dislikeOpacity(position) }
               ]}
             >
-              <Text style={styles.dislikeText}>NOPE</Text>
+              <Text style={styles.dislikeText}>Nie</Text>
             </Animated.View>
 
             <Image source={item.uri} style={styles.image} />
@@ -164,14 +164,14 @@ const Start = props => {
   return (
     <Modal visible={props.visible} animationType="slide">
       <View style={{ flex: 1 }}>
-        <View style={{ height: 100, alignItems: "center" , paddingTop: 30}}>
+        <View style={{ height: 110, alignItems: "center" , paddingTop: 30}}>
           <View style={{ width: '100%', flexGrow: 1, flex: 1, alignItems: 'center' }}>{rendetQuestionText()}</View>
         </View>
         <View style={{ flex: 1, width: '90%', height: '90%'}}>{renderQuestions()}</View>
         <View style={{ height: 60, alignItems: "center" }}>
           <View style={{ flex: 1, width: "50%" }}>
             <Button
-              title="back"
+              title="Powrót"
               onPress={props.onHandleSetVisibleOf}
               buttonStyle={styles.button}
             />
@@ -204,16 +204,16 @@ const styles = StyleSheet.create({
   likeContainer: {
     position: "absolute",
     zIndex: 1000,
-    top: 40,
-    left: 30,
+    top: 90,
+    left: 40,
     transform: [{ rotate: "-30deg" }]
   },
 
   dislikeContainer: {
     position: "absolute",
     zIndex: 1000,
-    top: 40,
-    right: 30,
+    top: 90,
+    right: 40,
     transform: [{ rotate: "30deg" }]
   },
 
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#39e600",
     color: "#39e600",
-    fontSize: 32,
+    fontSize: 45,
     fontWeight: "800",
     padding: 10
   },
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "red",
     color: "red",
-    fontSize: 32,
+    fontSize: 45,
     fontWeight: "800",
     padding: 10
   },

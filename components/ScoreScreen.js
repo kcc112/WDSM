@@ -136,7 +136,7 @@ const ScoreScreen = props => {
         <View style={styles.buttonContainer}>
           <Button
             buttonStyle={styles.buttonColor}
-            title="Retry"
+            title="Powtórz"
             color="black"
             onPress={() => {
               retryHandler();
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   buttonColor: {
     borderRadius: 20,
     backgroundColor: "#b30c00",
-    width: 100
+    width: 150
   }
 });
 

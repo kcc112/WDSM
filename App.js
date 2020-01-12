@@ -36,17 +36,7 @@ export default function App() {
   const [dataYes, setDataYes] = useState(startYesArray);
   const [dataNo, setDataNo] = useState(startNoArray);
   const [scoreVisiblity, setScoreVisibility] = useState(false);
-
-  const setAprovalYes = () => {
-    const name = Questions[indexForQuestion].name;
-    dataYes.find(item => item.name === name).approvals += 1;
-    dataNo.find(item => item.name === name).approvals -= 1;
-    indexForQuestion += 1;
-  }
-
-  const setAprovalNo = () => {
-    indexForQuestion += 1
-  }
+  const [firstTime, setFirstTime] = useState(true);
 
   const handleStartButtonClick = () => {
     setIndex(0);
@@ -62,6 +52,27 @@ export default function App() {
 
   const handleSetVisibleOf = () => {
     setVisible(false);
+  };
+
+
+  const setAprovalYes = () => {
+    const name = Questions[indexForQuestion].name;
+    if(name!=='tutorial'){
+    dataYes.find(item => item.name === name).approvals += 1;
+    dataNo.find(item => item.name === name).approvals -= 1;
+    }
+    else{    Questions.shift()}
+    indexForQuestion += 1;
+  }
+
+  const setAprovalNo = () => {
+    const name = Questions[indexForQuestion].name;
+    if(name==='tutorial') { handleSetVisibleOf(); return null;}
+    indexForQuestion += 1
+  }
+
+  const handleSetFirstTime = () => {
+    setFirstTime(false);
   };
 
   const previousResultHandler = () => {
@@ -123,6 +134,7 @@ export default function App() {
           setAprovalYes={ setAprovalYes }
           setAprovalNo={ setAprovalNo }
           scoreScreen = { previousResultHandler }
+          firstTime = { handleSetFirstTime }
         />
       </View>
     );

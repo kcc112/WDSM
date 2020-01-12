@@ -1,4 +1,5 @@
 export const Questions = [
+    { id: "0", uri: require("../assets/swipe.jpg"), text: "Celem aplikacji jest pomoc w wyborze przedmiotów fakultatywnych. W tym celu będą zadawne krótkie pytania, na które odpowiedziami jest \"tak\" lub \"nie\". Zrozumiałeś?", name: "tutorial"},
     { id: "1", uri: require("../assets/TPA_1.png"), text: "Lubisz wyzwania i programowanie obiektowe? Chesz zrozumieć język programowania od podstaw?", name: "TPA" },
     { id: "2", uri: require("../assets/TPA_2.png"), text: "Chcesz poznać czym są wzorce projektowe i jak wykorzystywać je w praktyce?", name: "TPA" },
     { id: "3", uri: require("../assets/TPA_3.png"), text: "Masz dość nudnych, tradycyjnych wykładów? Pragniesz prowadzić aktywnie dyskusje z prowadzącym i wspólnie rozwiązywać problemy?", name: "TPA" },
@@ -14,5 +15,13 @@ export const Questions = [
     { id: "13", uri: require("../assets/WZAIP_1.png"), text: "Po zakończeniu przedmiotu będziesz w pełni rozumieć klasyczne algorytmy oraz umieć je zastosować w praktyce.", name: "WZAIP" },
     { id: "14", uri: require("../assets/WZAIP_2.png"), text: "Przedmiot przygotuje Cię do pracy pod presją czasu oraz nauczy współzawodnictwa przy tworzeniu kodu.", name: "WZAIP" },
     { id: "15", uri: require("../assets/WZAIP_3.png"), text: "Będziesz w stanie tworzyć własne algorytmy do rozwiązywania napotkanych problemów.", name: "WZAIP" },
-    { id: "16", uri: require("../assets/WZAIP_4.png"), text: "Chciałbyś znać swoje braki w wiedzy z zakresu algorytmów oraz znać kierunek dalszego rozwoju w tej dziedzinie?", name: "WZAIP" },
-  ].sort(() => Math.random() - 0.5);
+    { id: "16", uri: require("../assets/WZAIP_4.png"), text: "Chciałbyś znać swoje braki w wiedzy z zakresu algorytmów oraz znać kierunek dalszego rozwoju w tej dziedzinie?", name: "WZAIP" }
+  ]
+
+  var first = Questions.shift();
+
+  Questions.sort(() => Math.random() - 0.5);
+
+  Questions.unshift(first)
+
+
