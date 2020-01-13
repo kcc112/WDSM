@@ -26,21 +26,20 @@ for(var i=0; i<startNoArrayClean.length; i++){
   startYesArray[i]=Object.assign({}, startYesArrayClean[i]);
   startNoArray[i]=Object.assign({}, startNoArrayClean[i]);
 }
+var indexForQuestion=0;
 
 
 
 export default function App() {
   const [isVisible, setVisible] = useState(false);
   const [index, setIndex] = useState(0);
-  let [indexForQuestion, setIndexForQuestion] = useState(0);
   const [dataYes, setDataYes] = useState(startYesArray);
   const [dataNo, setDataNo] = useState(startNoArray);
   const [scoreVisiblity, setScoreVisibility] = useState(false);
-  const [firstTime, setFirstTime] = useState(true);
 
   const handleStartButtonClick = () => {
     setIndex(0);
-
+    indexForQuestion=0;
     for(var i=0; i<dataYes.length; i++){
       dataYes[i].approvals=0;
       dataNo[i].approvals=4;
@@ -70,10 +69,6 @@ export default function App() {
     if(name==='tutorial') { handleSetVisibleOf(); return null;}
     indexForQuestion += 1
   }
-
-  const handleSetFirstTime = () => {
-    setFirstTime(false);
-  };
 
   const previousResultHandler = () => {
     if(scoreVisiblity == false) {
@@ -134,7 +129,6 @@ export default function App() {
           setAprovalYes={ setAprovalYes }
           setAprovalNo={ setAprovalNo }
           scoreScreen = { previousResultHandler }
-          firstTime = { handleSetFirstTime }
         />
       </View>
     );
